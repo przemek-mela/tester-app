@@ -10,7 +10,7 @@ import { SearchResult } from "../objects/search-result";
 })
 export class BugService {
   // Service addres with cotroller prefix
-  private serviceAddress = environment.testerServiceAddres + "/bug";
+  private serviceAddress = environment.testerServiceAddres + "bug";
 
   constructor(private http: HttpClient) {}
 

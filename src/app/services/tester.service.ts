@@ -8,7 +8,7 @@ import { environment } from "src/environments/environment";
 })
 export class TesterService {
   // Service addres with cotroller prefix
-  private serviceAddress = environment.testerServiceAddres + "/tester";
+  private serviceAddress = environment.testerServiceAddres + "tester";
 
   constructor(private http: HttpClient) {}
 

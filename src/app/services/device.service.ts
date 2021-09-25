@@ -9,7 +9,7 @@ import { Device } from "../models/device";
 })
 export class DeviceService {
   // Service addres with cotroller prefix
-  private serviceAddress = environment.testerServiceAddres + "/device";
+  private serviceAddress = environment.testerServiceAddres + "device";
 
   constructor(private http: HttpClient) {}
 
