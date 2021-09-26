@@ -1,0 +1,71 @@
+<div class="grid justify-content-start">
+  <!-- Title -->
+  <div class="col-12">
+    <h1>Tester Bug Report</h1>
+  </div>
+  <!-- Search Criteria -->
+  <div class="col-6">
+    <div class="grid justify-content-start">
+      <!-- Criteria Header -->
+      <div class="col-12 ">
+        <h2>Search Criteria</h2>
+      </div>
+      <!-- Devices -->
+      <div class="col-5">
+        <p-multiSelect [options]="devices" [(ngModel)]="searchCriteria.devices" optionLabel="description"
+          optionValue="deviceId" defaultLabel="Select devices" [maxSelectedLabels]="0"
+          [selectedItemsLabel]="'{0} devices selected'" (onChange)="onDevicesSelectionUpdate()"></p-multiSelect>
+        <!-- Selected Criteria -->
+        <p-tag *ngIf="searchCriteria.devices.length === 0" styleClass="m-2" severity="info" value="All"></p-tag>
+        <p-tag *ngFor="let device of selDevices" styleClass="m-2" severity="success" [value]="device.description"></p-tag>
+      </div>
+      <!-- Countries -->
+      <div class="col-4">
+        <p-multiSelect [options]="countries" [(ngModel)]="searchCriteria.countries" defaultLabel="Select countries"
+          [maxSelectedLabels]="0" [selectedItemsLabel]="'{0} countries selected'">
+        </p-multiSelect>
+        <!-- Selected Criteria -->
+        <p-tag *ngIf="searchCriteria.countries.length === 0" styleClass="m-2" severity="info" value="All"></p-tag>
+        <p-tag *ngFor="let country of searchCriteria.countries" styleClass="m-2" severity="success" [value]="country">
+        </p-tag>
+      </div>
+      <!-- Actions -->
+      <div class="col-3">
+        <button pButton type="button" label="Search" (click)="searchForBugReports()"></button>
+        <button pButton type="button" class="p-button-info ml-1" label="Clear" (click)="clear()"></button>
+      </div>
+    </div>
+  </div>
+  <!-- Search results -->
+  <div class="col-6">
+    <div *ngIf="showResult" class="grid justify-content-center">
+      <!-- Result Header -->
+      <div class="col-12" style="text-align: center;">
+        <h2>Search Results</h2>
+      </div>
+      <!-- Result table -->
+      <div *ngIf="searchResult.length > 0" class="col-12">
+        <p-table [columns]="cols" [value]="searchResult" styleClass="p-datatable-striped">
+          <ng-template pTemplate="header" let-columns>
+            <tr>
+              <th *ngFor="let col of columns">
+                {{col.header}}
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr>
+              <td *ngFor="let col of columns">
+                {{rowData[col.field]}}
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+      <!-- Empty search results message -->
+      <div *ngIf="searchResult.length == 0" class="col-6" style="text-align:center;">
+        <h4>No results matching search criteria</h4>
+      </div>
+    </div>
+  </div>
+</div>
