@@ -16,7 +16,12 @@ export class BugService {
 
   // Rest communication
   searchBugs(search: SearchCriteria): Observable<SearchResult[]> {
-    const uploadAdress = this.serviceAddress + "/search";
-    return this.http.post<SearchResult[]>(uploadAdress, search);
+    const uploadAdress =
+      this.serviceAddress +
+      "/search/?countries=" +
+      search.countries +
+      "&devices=" +
+      search.devices;
+    return this.http.get<SearchResult[]>(uploadAdress);
   }
 }
