@@ -1,6 +1,11 @@
 {
   "name": "tester-app",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "CLI that generates beautiful README.md files.",
+  "author": "Przemek Mela",
+  "license": "MIT",
+  "homepage": "https://github.com/przemek-mela/tester-app",
+
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -23,6 +28,7 @@
     "primeflex": "^3.0.1",
     "primeicons": "^4.1.0",
     "primeng": "^12.1.0",
+    "readme-md-generator": "^1.0.0",
     "rxjs": "~6.6.7",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.4"
@@ -47,5 +53,9 @@
     "ts-node": "~7.0.0",
     "tslint": "~6.1.0",
     "typescript": "~4.3.5"
+  },
+  "engines": {
+    "npm": ">=6.13.4",
+    "node": ">=12.14.1"
   }
 }
